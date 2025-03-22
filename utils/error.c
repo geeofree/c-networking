@@ -1,11 +1,12 @@
 #include "error.h"
 
-int handle_error(int return_val, char *error_message, int line_no) {
+int handle_error(int return_val, char *error_message, char *file, int line_no) {
   if (return_val < 0) {
     fprintf(
       stderr,
-      "%s (line: %d, error: %s, errno: %d)\n",
+      "%s\nfile: %s\nline number: %d\nerror: %s (%d)",
       error_message,
+      file,
       line_no,
       strerror(errno),
       errno
